@@ -3,9 +3,45 @@ body{
 }
 .timeline{
     margin: 0px auto;
+    margin-top: 30px;
     position: absolute;
     left: calc(50% - 510px/2);
 }
+
+.search{
+    float:none;
+    position: fixed;
+    z-index: 10;
+    left: calc(50% - 235px/2);
+    background: #fff;
+    border: 1px solid #899bc1;
+    border-top-color: #6d84b4;
+    display: inline-block;
+    width: 210px;
+}
+input{
+    border: 0;
+    margin: 0 22px 0 5px;
+    outline: none;
+    padding: 1px 5px 1px 1px;
+}
+.submit{
+    background-image: url(../pic/button.png);
+    background-repeat: no-repeat;
+    background-size: 502px 224px;
+    background-position: -120px -176px;
+    background-color: #fff;
+    border: 0;
+    cursor: pointer;
+    display: block;
+    height: 19px;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 22px;
+}
+
 .timelineUnitContainer {
     background-color: #fff;
     border: 1px solid #d3d6db;

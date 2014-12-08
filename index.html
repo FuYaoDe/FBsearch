@@ -28,7 +28,7 @@
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
         console.log('Logged in.');
-        getData();
+        // getData();
       }
       else {
         FB.login();
@@ -51,12 +51,12 @@
 <body>
     <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button> -->
-<div class="search">
-  <input type="text" name="keyword">
-  <input type="submit" value="Submit">
-</div>
   <!-- <div class="top"></div> -->
-  <div class="timeline">
+  <div class="search">
+      <input type="text" name="keyword" placeholder="搜尋高雄。巴豆妖" >
+      <button class="submit" type="submit" onclick="getData()">
+  </div>
+  <div id="timeline" class="timeline">
     <div class="timelineUnitContainer">
       <div class="head">
         <div class="name">
@@ -71,9 +71,7 @@
       </div>
        <img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xap1/v/t1.0-9/s130x130/15852_828947383835179_1057794027886530374_n.jpg?oh=91ae45e5f050330692aaf476166b68dd&oe=54FF1E4D&__gda__=1426708151_0d1e3a1bfc458eff51cac1fb120a5674">
       <div class="likebar">
-        <div class="like">
-          讚 ‧ 留言 ‧ 分享
-        </div>
+        <div class="like">讚 ‧ 留言 ‧ 分享</div>
       </div>
     </div>
 
