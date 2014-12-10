@@ -3,7 +3,7 @@ body{
 }
 .timeline{
     margin: 0px auto;
-    margin-top: 170px;
+    margin-top: 185px;
     position: absolute;
     left: calc(50% - 510px/2);
 }
@@ -14,7 +14,7 @@ body{
     width: 810px;
     height: 185px;
     left: calc(50% - 810px/2);
-    margin-top: -30px
+    margin-top: -8px
 
 }
 
@@ -23,12 +23,13 @@ body{
     position: fixed;
     z-index: 11;
     margin-left:540px;
-    margin-top: 155px;
+    margin-top: 150px;
     background: #fff;
     border: 1px solid #899bc1;
     border-top-color: #6d84b4;
     display: inline-block;
-    width: 210px;
+    width: 200px;
+    height: 27px;
 }
 input{
     border: 0;
@@ -53,6 +54,7 @@ input{
     right: 0;
     top: 0;
     width: 22px;
+    margin-top:3px;
 }
 
 .timelineUnitContainer {
@@ -99,6 +101,11 @@ input{
     margin-bottom:-40px;
 }
 
+.light{
+    /*font-weight: bold;*/
+    background-color:#6d84b4;
+    color:#ffffff;
+}
 .title{
     font-weight: bold;
     font-size: 13px;

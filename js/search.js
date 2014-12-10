@@ -1,19 +1,19 @@
-var Json;
+var JsonData;
 
 function getData(){
     FB.api(
         "kh.hungry/feed",
         {
             // "message": "This is a test message"
-            limit: "100"
+            limit: "250"
         },
         function (response) {
           if (response && !response.error) {
             console.log(response);
-            Json = response;
-            for (var i = 0; i <Json.data.length; i++) {
-              if(!isEmpty(Json.data[i].message) && Json.data[i].from.id=="735087896554462"){
-                getJson(i);
+            JsonData = response;
+            for (var i = 0; i <JsonData.data.length; i++) {
+              if(!isEmpty(JsonData.data[i].message) && JsonData.data[i].from.id=="735087896554462"){
+                findKeyWord(i,"高雄市");
               }
             }
             // document.write(response);
@@ -35,8 +35,10 @@ function addtimelineUnitContainer(time,detail,picUrl,like,comment,share,url){
            "<a href=\""+url+"\" target=\"_blank\">"+
               "<img src=\"pic/detail.png\" class=\"detailicon\">"+
            "</a>"+
-           "<div class=\"title\">高雄。巴豆妖</div>"+
-           "<div class=\"time\">"+time+"</div>"+
+           "<a href=\""+url+"\" target=\"_blank\" style=\"text-decoration:none\">"+
+              "<div class=\"title\">高雄。巴豆妖</div>"+
+              "<div class=\"time\">"+time+"</div>"+
+           "</a>"+
         "</div>"+
       "</div>"+
       "<div class=\"detail\">"+detail+"</div>"+
@@ -58,8 +60,10 @@ function addsharetimeliner(time,detail,picUrl,linktitle,link,linkdetail,like,com
            "<a href=\""+url+"\" target=\"_blank\">"+
               "<img src=\"pic/detail.png\" class=\"detailicon\">"+
            "</a>"+
-           "<div class=\"title\">高雄。巴豆妖</div>"+
-           "<div class=\"time\">"+time+"</div>"+
+           "<a href=\""+url+"\" target=\"_blank\" style=\"text-decoration:none\">"+
+               "<div class=\"title\">高雄。巴豆妖</div>"+
+               "<div class=\"time\">"+time+"</div>"+
+            "</a>"+
         "</div>"+
       "</div>"+
       "<div class=\"detail\">"+detail+"</div>"+
@@ -76,33 +80,47 @@ function addsharetimeliner(time,detail,picUrl,linktitle,link,linkdetail,like,com
     TimeLine.innerHTML+=insertTimeLine;
 }
 
-function getJson(a){
-  // console.log(Json.data[a].created_time);
-    var data=Json.data[a];
+function getJson(a,str){
+  // console.log(JsonData.data[a].created_time);
+    var data=JsonData.data[a];
     if(data.status_type=="shared_story"){
-      addsharetimeliner(data.created_time,
-                        processStr(data.message),
+      addsharetimeliner(processTime(data.created_time),
+                        processStr(data.message,str),
                         data.picture,
                         data.name,
-                        data.caption,
+                        (isEmpty(data.caption))?"":data.caption,
                         (isEmpty(data.description))?"":data.description,
                         (isEmpty(data.likes))?"":data.likes.data.length+"個",
                         (isEmpty(data.comments))?"":data.comments.data.length+"個",
                         (isEmpty(data.shares))?"":data.shares.count+"個",
                         data.actions[0].link);
     }else{
-      addtimelineUnitContainer(data.created_time,
-                             processStr(data.message),
-                             data.picture,
-                             (isEmpty(data.likes))?"":data.likes.data.length+"個",
-                             (isEmpty(data.comments))?"":data.comments.data.length+"個",
-                             (isEmpty(data.shares))?"":data.shares.count+"個",
-                             data.actions[0].link);
+      addtimelineUnitContainer(processTime(data.created_time),
+                               processStr(data.message,str),
+                               data.picture,
+                               (isEmpty(data.likes))?"":data.likes.data.length+"個",
+                               (isEmpty(data.comments))?"":data.comments.data.length+"個",
+                               (isEmpty(data.shares))?"":data.shares.count+"個",
+                               data.actions[0].link);
     }
 }
 
-function findKeyWord(str){
-
+function findKeyWord(a,str){
+  var data=JsonData.data[a];
+  // console.log(JSON.parse(data.message));
+  console.log(a);
+  if(data.status_type=="shared_story"){
+      if(find((isEmpty(data.message))?"":data.message,str)|| 
+         find((isEmpty(data.name))?"":data.name,str) || 
+         find((isEmpty(data.caption))?"":data.caption,str)|| 
+         find((isEmpty(data.description))?"":data.description,str)){
+        getJson(a,str);
+      }
+  }else{
+      if(find((isEmpty(data.message))?"":data.message,str)){
+        getJson(a,str);
+      }
+  }
 }
 
 
@@ -126,7 +144,20 @@ function isEmpty(obj) {
     return true;
 }
 
-function processStr(str){
+function processStr(str,keyword){
   var re = new RegExp("\n", "g");
-  return str.replace(re,"<br>");
+  str = str.replace(re,"<br>");
+  var find = new RegExp(keyword, "g");
+  return str.replace(find,"<span class=\"light\">"+keyword+"</span>");
+}
+
+function processTime(str){
+  return str.split("T")[0];
+}
+
+function find(str,keyword){
+  if(str.toString().indexOf(keyword)!=-1)
+    return true;
+  else
+    return false;
 }
