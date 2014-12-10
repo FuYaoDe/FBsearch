@@ -28,7 +28,7 @@
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
         console.log('Logged in.');
-        // getData();
+        getData();
       }
       else {
         FB.login();
@@ -54,8 +54,8 @@
   <!-- <div class="top"></div> -->
   <div class="banner">
     <div class="search">
-      <input type="text" name="keyword" placeholder="搜尋高雄。巴豆妖" >
-      <button class="submit" type="submit" onclick="getData()">
+      <input id="keyword" type="text" name="keyword" placeholder="搜尋高雄。巴豆妖" >
+      <button class="submit" type="submit" onclick="search()">
     </div>
   </div>
 
