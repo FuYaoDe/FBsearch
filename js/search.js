@@ -1,4 +1,5 @@
 var JsonData;
+var next;
 
 function getData() {
     FB.api(
@@ -155,3 +156,7 @@ function find(str, keyword) {
     else
         return false;
 }
+
+$(window).fancy_scroll({
+  animation: "bounce" // Options available are bounce (like on iOS), or glow (like on Android 4.0+)
+});
