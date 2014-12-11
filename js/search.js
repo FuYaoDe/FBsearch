@@ -6,6 +6,7 @@ function searchClick(){
         TimeLine.innerHTML="";
         input = document.getElementById("keyword").value;
         dataNum=0;
+        isBottom=false;
         search();
     }
 }

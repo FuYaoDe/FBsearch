@@ -8,6 +8,7 @@ var isLoading;
 var dataNum=0;
 var limit=150;              //每次載入的數量
 var isBottom;
+var maxNum;
 /**
  * 從FB.api撈取巴豆妖資料存進JsonData裡面
  */
@@ -51,6 +52,7 @@ function getData() {
                         until = getUntil(JsonData[dataNum].paging.next);
                     }else{
                         isBottom=true;
+                        maxNum=dataNum;
                     }
                     isDataSet=true;
                     isLoading=false;
@@ -73,7 +75,11 @@ $(window).scroll(function(){
         isLoading=true;
         if(isDataLoaded()){
             isLoading=false;
-            dataNum++;
+            if(dataNum<maxNum){
+                dataNum++;
+            }else{
+                isBottom=true;
+            }
             search();
             console.log("從舊資料中"+dataNum);
         }else{
@@ -83,7 +89,7 @@ $(window).scroll(function(){
         }
     }
 
-    console.log(page_h*(comein_position/100));
+    // console.log((scroll+window_h)/(page_h*(comein_position/100)));
 
 });
 /**
