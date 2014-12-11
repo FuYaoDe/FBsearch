@@ -7,6 +7,7 @@ body{
     position: absolute;
     left: calc(50% - 510px/2);
 }
+
 .banner{
     background-image: url(../pic/banner.jpg);
     position: fixed;
@@ -15,7 +16,6 @@ body{
     height: 185px;
     left: calc(50% - 810px/2);
     margin-top: -8px
-
 }
 
 .search{

@@ -13,18 +13,6 @@
     version    : 'v2.2' // use version 2.1
   });
 
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
         console.log('Logged in.');
@@ -47,7 +35,7 @@
 </script>
 <link rel="stylesheet" href="css/FBLikeStyle.css" type="text/css"/>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="js/jquery.fancy-scroll.js" type="text/javascript"></script>
+<script src="js/loadData.js" type="text/javascript"></script>
 <script src="js/search.js" type="text/javascript"></script>
 </head>
 <body>
@@ -57,10 +45,9 @@
   <div class="banner">
     <div class="search">
       <input id="keyword" type="text" name="keyword" placeholder="搜尋高雄。巴豆妖" >
-      <button class="submit" type="submit" onclick="search()">
+      <button class="submit" type="submit" onclick="searchClick()">
     </div>
   </div>
-
   <div id="timeline" class="timeline">
     <!-- <div class="timelineUnitContainer">
       <div class="head">

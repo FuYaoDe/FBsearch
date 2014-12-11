@@ -1,38 +1,30 @@
-var JsonData;
-var next;
+var input;
 
-/**
- * 從FB.api撈取巴豆妖資料存進JsonData裡面
- */
-function getData() {
-    FB.api(
-        "kh.hungry/feed", {
-            // "message": "This is a test message"
-            limit: "100"
-        },
-        function(response) {
-            if (response && !response.error) {
-                console.log(response);
-                JsonData = response;
-                // document.write(response);
-                // print(response);
-            }
-        }
-    );
+function searchClick(){
+    if(document.getElementById("keyword").value!=input){
+        var TimeLine = document.getElementById('timeline');
+        TimeLine.innerHTML="";
+        input = document.getElementById("keyword").value;
+        dataNum=0;
+        search();
+    }
 }
+
 
 /**
  * 使用input裡的關鍵字,遍歷搜尋所有JsonData內的資料,並顯示於網頁上
  * @returns {html} 顯示於網頁上
  */
 function search(){
-  var TimeLine = document.getElementById('timeline');
-  TimeLine.innerHTML="";
-  for (var i = 0; i < JsonData.data.length; i++) { 
-      if (!isEmpty(JsonData.data[i].message) && JsonData.data[i].from.id == "735087896554462") {
-          findKeyWord(i, document.getElementById("keyword").value);
+    isSearchfail=true;
+    if(isDataSet){
+      for (var i = 0; i < JsonData[dataNum].data.length; i++) { 
+          if (!isEmpty(JsonData[dataNum].data[i].message) && JsonData[dataNum].data[i].from.id == id) {
+              findKeyWord(i, input);
+          }
       }
-  }
+      isSearchfail=false;
+    }
 }
 
 /**
@@ -119,8 +111,8 @@ function addsharetimeliner(time, detail, picUrl, linktitle, link, linkdetail, li
  * @param {String} str 使用者搜尋的關鍵字
  */
 function getJson(a, str) {
-    // console.log(JsonData.data[a].created_time);
-    var data = JsonData.data[a];
+    // console.log(JsonData[dataNum].data[a].created_time);
+    var data = JsonData[dataNum].data[a];
     if (data.status_type == "shared_story") {
         addsharetimeliner(processTime(data.created_time),
             processStr(data.message, str),
@@ -148,9 +140,9 @@ function getJson(a, str) {
  * @param {String} str 使用者搜尋的關鍵字
  */
 function findKeyWord(a, str) {
-    var data = JsonData.data[a];
+    var data = JsonData[dataNum].data[a];
     // console.log(JSON.parse(data.message));
-    console.log(a);
+    // console.log(a);
     if (data.status_type == "shared_story") {
         if (find((isEmpty(data.message)) ? "" : data.message, str) ||
             find((isEmpty(data.name)) ? "" : data.name, str) ||
@@ -218,13 +210,9 @@ function processStr(str, keyword) {
 
 /**
  * FB.api傳送的時間格式為"2014-12-09T12:30:01+0000",把"T"後的所有字剃除變為"2014-12-09"
- * @param {str} str 要被處理的時間
+ * @param {String} str 要被處理的時間
  * @returns {String} 處理完成的時間格式
  */
 function processTime(str) {
     return str.split("T")[0];
 }
-
-$(window).fancy_scroll({
-  animation: "bounce" // Options available are bounce (like on iOS), or glow (like on Android 4.0+)
-});
