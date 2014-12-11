@@ -1,6 +1,9 @@
 var JsonData;
 var next;
 
+/**
+ * 從FB.api撈取巴豆妖資料存進JsonData裡面
+ */
 function getData() {
     FB.api(
         "kh.hungry/feed", {
@@ -18,71 +21,103 @@ function getData() {
     );
 }
 
+/**
+ * 使用input裡的關鍵字,遍歷搜尋所有JsonData內的資料,並顯示於網頁上
+ * @returns {html} 顯示於網頁上
+ */
 function search(){
   var TimeLine = document.getElementById('timeline');
   TimeLine.innerHTML="";
-  for (var i = 0; i < JsonData.data.length; i++) {
+  for (var i = 0; i < JsonData.data.length; i++) { 
       if (!isEmpty(JsonData.data[i].message) && JsonData.data[i].from.id == "735087896554462") {
           findKeyWord(i, document.getElementById("keyword").value);
       }
   }
 }
 
+/**
+ * 在timeline新增一個普通動態
+ * @param {String} time 傳入該動態的時間
+ * @param {String} detail 該該動態的內容
+ * @param {String} picUrl 該動態的附圖連結
+ * @param {String} like 該動態的讚數
+ * @param {String} comment 該動態的留言數
+ * @param {String} share 該動態的分享數
+ * @param {String} url 該動態的連結網址 
+ */
 function addtimelineUnitContainer(time, detail, picUrl, like, comment, share, url) {
     var TimeLine = document.getElementById('timeline');
     var insertTimeLine =
         "<div class=\"timelineUnitContainer\">" +
-        "<div class=\"head\">" +
-        "<div class=\"name\">" +
-        "<img src=\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/p56x56/1240031_746774058719179_3502506887230652003_n.jpg?oh=831c47d812b8d13909146302609df7d9&oe=54FA8BDB&__gda__=1426970376_18a3f1f7338dcdecb63f0c120dcfd607\" class=\"icon\">" +
-        "<a href=\"" + url + "\" target=\"_blank\">" +
-        "<img src=\"pic/detail.png\" class=\"detailicon\">" +
-        "</a>" +
-        "<a href=\"" + url + "\" target=\"_blank\" style=\"text-decoration:none\">" +
-        "<div class=\"title\">高雄。巴豆妖</div>" +
-        "<div class=\"time\">" + time + "</div>" +
-        "</a>" +
-        "</div>" +
-        "</div>" +
-        "<div class=\"detail\">" + detail + "</div>" +
-        "<img class=\"pic\" src=\"" + picUrl + "\">" +
-        "<div class=\"likebar\">" +
-        "<div class=\"like\">" + like + "讚 ‧ " + comment + "留言 ‧ " + share + "分享</div>" +
-        "</div>" +
+            "<div class=\"head\">" +
+                "<div class=\"name\">" +
+                    "<img src=\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/p56x56/1240031_746774058719179_3502506887230652003_n.jpg?oh=831c47d812b8d13909146302609df7d9&oe=54FA8BDB&__gda__=1426970376_18a3f1f7338dcdecb63f0c120dcfd607\" class=\"icon\">" +
+                    "<a href=\"" + url + "\" target=\"_blank\">" +
+                        "<img src=\"pic/detail.png\" class=\"detailicon\">" +
+                    "</a>" +
+                    "<a href=\"" + url + "\" target=\"_blank\" style=\"text-decoration:none\">" +
+                        "<div class=\"title\">高雄。巴豆妖</div>" +
+                        "<div class=\"time\">" + time + "</div>" +
+                    "</a>" +
+                "</div>" +
+            "</div>" +
+            "<div class=\"detail\">" + detail + "</div>" +
+            "<img class=\"pic\" src=\"" + picUrl + "\">" +
+            "<div class=\"likebar\">" +
+                "<div class=\"like\">" + like + "讚 ‧ " + comment + "留言 ‧ " + share + "分享</div>" +
+            "</div>" +
         "</div>";
     TimeLine.innerHTML += insertTimeLine;
 }
 
+/**
+ * 在timeline新增一個含分享的動態
+ * @param {String} time 傳入該動態的時間
+ * @param {String} detail 該該動態的內容
+ * @param {String} picUrl 分享的附圖連結
+ * @param {String} linktitle 分享的title
+ * @param {String} link 分享的原文"網域"
+ * @param {String} linkdetail 分享的內文
+ * @param {String} like 該動態的讚數
+ * @param {String} comment 該動態的留言數
+ * @param {String} share 該動態的分享數
+ * @param {String} url 該動態的連結網址 
+ */
 function addsharetimeliner(time, detail, picUrl, linktitle, link, linkdetail, like, comment, share, url) {
     var TimeLine = document.getElementById('timeline');
     var insertTimeLine =
         "<div class=\"timelineUnitContainer\">" +
-        "<div class=\"head\">" +
-        "<div class=\"name\">" +
-        "<img src=\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/p56x56/1240031_746774058719179_3502506887230652003_n.jpg?oh=831c47d812b8d13909146302609df7d9&oe=54FA8BDB&__gda__=1426970376_18a3f1f7338dcdecb63f0c120dcfd607\" class=\"icon\">" +
-        "<a href=\"" + url + "\" target=\"_blank\">" +
-        "<img src=\"pic/detail.png\" class=\"detailicon\">" +
-        "</a>" +
-        "<a href=\"" + url + "\" target=\"_blank\" style=\"text-decoration:none\">" +
-        "<div class=\"title\">高雄。巴豆妖</div>" +
-        "<div class=\"time\">" + time + "</div>" +
-        "</a>" +
-        "</div>" +
-        "</div>" +
-        "<div class=\"detail\">" + detail + "</div>" +
-        "<div class=\"outsidelink\">" +
-        "<img class=\"linkpic\" src=\"" + picUrl + "\">" +
-        "<div class=\"linktitle\">" + linktitle + "</div>" +
-        "<div class=\"link\">" + link + "</div>" +
-        "<div class=\"linkdetail\">" + linkdetail + "</div>" +
-        "</div>" +
-        "<div class=\"likebar\">" +
-        "<div class=\"like\">" + like + "讚 ‧ " + comment + "留言 ‧ " + share + "分享</div>" +
-        "</div>" +
+            "<div class=\"head\">" +
+                "<div class=\"name\">" +
+                    "<img src=\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/p56x56/1240031_746774058719179_3502506887230652003_n.jpg?oh=831c47d812b8d13909146302609df7d9&oe=54FA8BDB&__gda__=1426970376_18a3f1f7338dcdecb63f0c120dcfd607\" class=\"icon\">" +
+                    "<a href=\"" + url + "\" target=\"_blank\">" +
+                        "<img src=\"pic/detail.png\" class=\"detailicon\">" +
+                    "</a>" +
+                    "<a href=\"" + url + "\" target=\"_blank\" style=\"text-decoration:none\">" +
+                        "<div class=\"title\">高雄。巴豆妖</div>" +
+                        "<div class=\"time\">" + time + "</div>" +
+                    "</a>" +
+                "</div>" +
+            "</div>" +
+            "<div class=\"detail\">" + detail + "</div>" +
+                "<div class=\"outsidelink\">" +
+                "<img class=\"linkpic\" src=\"" + picUrl + "\">" +
+                "<div class=\"linktitle\">" + linktitle + "</div>" +
+                "<div class=\"link\">" + link + "</div>" +
+                "<div class=\"linkdetail\">" + linkdetail + "</div>" +
+            "</div>" +
+            "<div class=\"likebar\">" +
+                "<div class=\"like\">" + like + "讚 ‧ " + comment + "留言 ‧ " + share + "分享</div>" +
+            "</div>" +
         "</div>";
     TimeLine.innerHTML += insertTimeLine;
 }
 
+/**
+ * 獲取json內單筆資料,並呼叫addtimelineUnitContainer、addsharetimeliner用於顯示
+ * @param {int} a data的位置
+ * @param {String} str 使用者搜尋的關鍵字
+ */
 function getJson(a, str) {
     // console.log(JsonData.data[a].created_time);
     var data = JsonData.data[a];
@@ -90,16 +125,28 @@ function getJson(a, str) {
         addsharetimeliner(processTime(data.created_time),
             processStr(data.message, str),
             data.picture,
-            data.name, (isEmpty(data.caption)) ? "" : data.caption, (isEmpty(data.description)) ? "" : data.description, (isEmpty(data.likes)) ? "" : data.likes.data.length + "個", (isEmpty(data.comments)) ? "" : data.comments.data.length + "個", (isEmpty(data.shares)) ? "" : data.shares.count + "個",
-            data.actions[0].link);
+            data.name, 
+            (isEmpty(data.caption)) ? "" : data.caption, (isEmpty(data.description)) ? "" : data.description, 
+                                                         (isEmpty(data.likes)) ? "" : data.likes.data.length + "個", 
+                                                         (isEmpty(data.comments)) ? "" : data.comments.data.length + "個", 
+                                                         (isEmpty(data.shares)) ? "" : data.shares.count + "個",
+                                                          data.actions[0].link);
     } else {
         addtimelineUnitContainer(processTime(data.created_time),
             processStr(data.message, str),
-            data.picture, (isEmpty(data.likes)) ? "" : data.likes.data.length + "個", (isEmpty(data.comments)) ? "" : data.comments.data.length + "個", (isEmpty(data.shares)) ? "" : data.shares.count + "個",
+            data.picture,
+            (isEmpty(data.likes)) ? "" : data.likes.data.length + "個", (isEmpty(data.comments)) ? "" : data.comments.data.length + "個", 
+                                                                        (isEmpty(data.shares)) ? "" : data.shares.count + "個",
             data.actions[0].link);
     }
 }
 
+
+/**
+ * 搜尋單筆資料內是否有關鍵字,有的話呼叫getJson
+ * @param {int} a data的位置
+ * @param {String} str 使用者搜尋的關鍵字
+ */
 function findKeyWord(a, str) {
     var data = JsonData.data[a];
     // console.log(JSON.parse(data.message));
@@ -118,7 +165,24 @@ function findKeyWord(a, str) {
     }
 }
 
+/**
+ * 判斷該字串內是否有關鍵字
+ * @param {String} str 被搜尋的內容
+ * @param {String} keyword 要搜尋的關鍵字
+ * @returns {Boolean} 有關鍵字回傳true,沒有關鍵字回傳false
+ */
+function find(str, keyword) {
+    if (str.toString().indexOf(keyword) != -1)
+        return true;
+    else
+        return false;
+}
 
+/**
+ * 判斷Object內是否有資料
+ * @param {Object} obj
+ * @returns {Boolean} 有資料回傳false,沒資料回傳true
+ */
 function isEmpty(obj) {
 
     // null and undefined are "empty"
@@ -139,6 +203,12 @@ function isEmpty(obj) {
     return true;
 }
 
+/**
+ * 把Json內的\n替換為<br>,並加上light反白
+ * @param {String} str 要被處理的內容
+ * @param {String} keyword 要反白的關鍵字
+ * @returns {String} 處理完成的內容
+ */
 function processStr(str, keyword) {
     var re = new RegExp("\n", "g");
     str = str.replace(re, "<br>");
@@ -146,15 +216,13 @@ function processStr(str, keyword) {
     return str.replace(find, "<span class=\"light\">" + keyword + "</span>");
 }
 
+/**
+ * FB.api傳送的時間格式為"2014-12-09T12:30:01+0000",把"T"後的所有字剃除變為"2014-12-09"
+ * @param {str} str 要被處理的時間
+ * @returns {String} 處理完成的時間格式
+ */
 function processTime(str) {
     return str.split("T")[0];
-}
-
-function find(str, keyword) {
-    if (str.toString().indexOf(keyword) != -1)
-        return true;
-    else
-        return false;
 }
 
 $(window).fancy_scroll({
