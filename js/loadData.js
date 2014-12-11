@@ -26,8 +26,10 @@ function getData() {
                     // until = getUntil(JsonData[JsonData.length-1].paging.next);
                     if(!isEmpty(JsonData[dataNum].paging.next)){
                         until = getUntil(JsonData[dataNum].paging.next);
+                        maxNum=dataNum;
                     }else{
                         isBottom=true;
+                        maxNum=dataNum;
                     }
                     isDataSet=true;
                     if(isSearchfail){
@@ -50,6 +52,7 @@ function getData() {
                     // until = getUntil(JsonData[JsonData.length-1].paging.next);
                     if(!isEmpty(JsonData[dataNum].paging)){
                         until = getUntil(JsonData[dataNum].paging.next);
+                        maxNum=dataNum;
                     }else{
                         isBottom=true;
                         maxNum=dataNum;
