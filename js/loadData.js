@@ -59,6 +59,7 @@ function getData() {
                         until = getUntil(JsonData[dataNum].paging.next);
                         maxNum=dataNum;
                         search();
+                        document.getElementById('circularG').style.display = 'none';
                     }else{
                         //清除空的json
                         JsonData.pop();
@@ -90,6 +91,7 @@ $(window).scroll(function(){
             console.log("從舊資料中"+dataNum);
         }else{
             getData();
+            document.getElementById('circularG').style.display = 'block';
             dataNum++;
             console.log("Post:"+dataNum);
         }

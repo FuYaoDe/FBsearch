@@ -35,6 +35,8 @@ function search(){
       }
       isSearchClick=false;
       isOverflowed();
+    }else{
+        document.getElementById('circularG').style.display = 'block';
     }
 }
 

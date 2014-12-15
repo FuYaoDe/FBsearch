@@ -34,6 +34,7 @@
   }(document, 'script', 'facebook-jssdk'));
 </script>
 <link rel="stylesheet" href="css/FBLikeStyle.css" type="text/css"/>
+<link rel="stylesheet" href="css/LoadAnimation.css" type="text/css"/>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="js/loadData.js" type="text/javascript"></script>
 <script src="js/search.js" type="text/javascript"></script>
@@ -48,7 +49,9 @@
       <button class="submit" type="submit" onclick="searchClick()">
     </div>
   </div>
-  <div id="timeline" class="timeline">
+
+  <div class="timeline">
+    <div id="timeline">
     <!-- <div class="timelineUnitContainer">
       <div class="head">
         <div class="name">
@@ -93,6 +96,19 @@
         </div>
       </div>
     </div> -->
+    </div>
+  <div id="loading">
+    <div id="circularG">
+      <div id="circularG_1" class="circularG"></div>
+      <div id="circularG_2" class="circularG"></div>
+      <div id="circularG_3" class="circularG"></div>
+      <div id="circularG_4" class="circularG"></div>
+      <div id="circularG_5" class="circularG"></div>
+      <div id="circularG_6" class="circularG"></div>
+      <div id="circularG_7" class="circularG"></div>
+      <div id="circularG_8" class="circularG"></div>
+    </div>
   </div>
+</div>
 </body>
 </html>
