@@ -25,7 +25,7 @@ function searchClick(){
  * @returns {html} 顯示於網頁上
  */
 function search(){
-    isSearchfail=true;
+    isSearchClick=true;
     if(isDataSet){
       for (var i = 0; i < JsonData[dataNum].data.length; i++) { 
           if (!isEmpty(JsonData[dataNum].data[i].message) && 
@@ -33,7 +33,7 @@ function search(){
               findKeyWord(i, input);
           }
       }
-      isSearchfail=false;
+      isSearchClick=false;
       isOverflowed();
     }
 }
