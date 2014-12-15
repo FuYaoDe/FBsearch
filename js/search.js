@@ -1,5 +1,5 @@
 var input;
-
+var isfailLoad=false;      //載入Json的時候如搜尋資料,isfailLoad為true要放棄此筆資料
 
 /**
  * 點擊搜尋按鈕時獲取輸入框,並且顯示出來
@@ -16,6 +16,10 @@ function searchClick(){
         dataNum=0;
         isBottom=false;
         search();
+        document.getElementById('circularG').style.display = 'block';
+        if(isLoading){
+            isfailLoad=true;
+        }
     }
 }
 

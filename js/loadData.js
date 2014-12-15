@@ -5,8 +5,8 @@ var isSearchClick;         //防止使用者在第一筆json還沒載入前搜�
 var until;                 //如有下一筆資料,until裡面有值,通常第一筆post前until沒有值
 var comein_position=50;    //卷軸高度,用於lazyLoad
 var isLoading;             //資料載入中為true,資料載入完成false
-var dataNum=0;          
-var limit=150;             //每次載入的數量
+var dataNum=0;        
+var limit=100;             //每次載入的數量
 var isBottom;              //所有資料載入完成為true
 var maxNum;                //JsonData的最大值
 /**
@@ -22,20 +22,25 @@ function getData() {
                 if (response && !response.error) {
                     console.log(response);
                     // JsonData = response;
-                    JsonData.push(response);
-                    // until = getUntil(JsonData[JsonData.length-1].paging.next);
-                    isDataSet=true;
-                    if(!isEmpty(JsonData[dataNum].paging.next)){
-                        until = getUntil(JsonData[dataNum].paging.next);
-                        maxNum=dataNum;
-                        if(isSearchClick){
-                            search();
+                    if(!isfailLoad){
+                        JsonData.push(response);
+                        // until = getUntil(JsonData[JsonData.length-1].paging.next);
+                        isDataSet=true;
+                        if(!isEmpty(JsonData[dataNum].paging.next)){
+                            until = getUntil(JsonData[dataNum].paging.next);
+                            maxNum=dataNum;
+                            if(isSearchClick){
+                                search();
+                            }
+                        }else{
+                            //清除空的json
+                            JsonData.pop();
+                            isBottom=true;
+                            maxNum=dataNum;
                         }
                     }else{
-                        //清除空的json
-                        JsonData.pop();
-                        isBottom=true;
-                        maxNum=dataNum;
+                        isDataSet=true;
+                        isfailLoad=false;
                     }
                 }
             }
@@ -50,21 +55,29 @@ function getData() {
                 if (response && !response.error) {
                     console.log(response);
                     // JsonData = response;
-                    JsonData.push(response);
-                    // until = getUntil(JsonData[JsonData.length-1].paging.next);
-                    isDataSet=true;
-                    isLoading=false;
+                    if(!isfailLoad){
+                        JsonData.push(response);
+                        // until = getUntil(JsonData[JsonData.length-1].paging.next);
+                        isDataSet=true;
+                        isLoading=false;
 
-                    if(!isEmpty(JsonData[dataNum].paging)){
-                        until = getUntil(JsonData[dataNum].paging.next);
-                        maxNum=dataNum;
-                        search();
-                        document.getElementById('circularG').style.display = 'none';
+                        if(!isEmpty(JsonData[dataNum].paging)){
+                            until = getUntil(JsonData[dataNum].paging.next);
+                            maxNum=dataNum;
+                            // if(isSearchClick){
+                                search();
+                            // }
+                            document.getElementById('circularG').style.display = 'none';
+                        }else{
+                            //清除空的json
+                            JsonData.pop();
+                            isBottom=true;
+                            maxNum=dataNum;
+                        }
                     }else{
-                        //清除空的json
-                        JsonData.pop();
-                        isBottom=true;
-                        maxNum=dataNum;
+                        isDataSet=true;
+                        isLoading=false;
+                        isfailLoad=false;
                     }
                 }
             }
@@ -89,6 +102,7 @@ $(window).scroll(function(){
             }
             search();
             console.log("從舊資料中"+dataNum);
+            console.log(JsonData[dataNum]);
         }else{
             getData();
             document.getElementById('circularG').style.display = 'block';
@@ -128,6 +142,7 @@ function isOverflowed() {
             }
             search();
             console.log("從舊資料中"+dataNum);
+            console.log(JsonData[dataNum]);
         }else{
             getData();
             dataNum++;
