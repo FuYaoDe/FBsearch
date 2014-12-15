@@ -38,7 +38,7 @@ function search(){
           }
       }
       isSearchClick=false;
-      isOverflowed();
+      // isOverflowed();
     }else{
         document.getElementById('circularG').style.display = 'block';
     }

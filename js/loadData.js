@@ -37,11 +37,13 @@ function getData() {
                             JsonData.pop();
                             isBottom=true;
                             maxNum=dataNum;
+                            document.getElementById('circularG').style.display = 'none';
                         }
                     }else{
                         isDataSet=true;
                         isfailLoad=false;
                     }
+                    isOverflowed();
                 }
             }
         );
@@ -73,12 +75,14 @@ function getData() {
                             JsonData.pop();
                             isBottom=true;
                             maxNum=dataNum;
+                            document.getElementById('circularG').style.display = 'none';
                         }
                     }else{
                         isDataSet=true;
                         isLoading=false;
                         isfailLoad=false;
                     }
+                    isOverflowed();
                 }
             }
         );
