@@ -110,7 +110,26 @@ function getUntil(str){
  * @returns {Boolean} 有卷軸回傳true,沒卷軸回傳false
  */
 function isOverflowed() {
-  return !($(window).height()==$(document).height());
+  // return !($(window).height()==$(document).height());
+  if(!isLoading && !isBottom){
+      if($(window).height()==$(document).height()){
+        isLoading=true;
+        if(isDataLoaded()){
+            isLoading=false;
+            if(dataNum<maxNum){
+                dataNum++;
+            }else{
+                isBottom=true;
+            }
+            search();
+            console.log("從舊資料中"+dataNum);
+        }else{
+            getData();
+            dataNum++;
+            console.log("Post:"+dataNum);
+        }
+      }
+  }
 }
 
 /**

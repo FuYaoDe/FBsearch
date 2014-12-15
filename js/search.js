@@ -1,10 +1,18 @@
 var input;
 
+
+/**
+ * 點擊搜尋按鈕時獲取輸入框,並且顯示出來
+ */
 function searchClick(){
     if(document.getElementById("keyword").value!=input){
         var TimeLine = document.getElementById('timeline');
         TimeLine.innerHTML="";
         input = document.getElementById("keyword").value;
+        if(input==""){
+            input=" ";
+        }
+        document.body.scrollTop=0;
         dataNum=0;
         isBottom=false;
         search();
@@ -20,11 +28,13 @@ function search(){
     isSearchfail=true;
     if(isDataSet){
       for (var i = 0; i < JsonData[dataNum].data.length; i++) { 
-          if (!isEmpty(JsonData[dataNum].data[i].message) && JsonData[dataNum].data[i].from.id == id) {
+          if (!isEmpty(JsonData[dataNum].data[i].message) && 
+                JsonData[dataNum].data[i].from.id == id) {
               findKeyWord(i, input);
           }
       }
       isSearchfail=false;
+      isOverflowed();
     }
 }
 
