@@ -189,3 +189,13 @@ input{
 a{
     color: #3b5998;
 }
+
+#report{
+    position: fixed;
+    font-size: 10px;
+    top:98%;
+    left:93%;
+    color: #777777;
+    text-decoration:underline;
+    cursor: pointer;
+}

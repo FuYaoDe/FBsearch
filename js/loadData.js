@@ -172,7 +172,7 @@ function isDataLoaded(){
 
 
 
-function test(){
+function Report(){
     vex.dialog.prompt({
       message: '回報問題：',
       placeholder: '遇到甚麼狀況呢？',
@@ -185,7 +185,7 @@ function test(){
                     var reportObject = new ReportObject();
                         reportObject.save({
                             name: response.name,
-                            word: value,
+                            issue: value,
                             link: response.link
                             }, {
                           success: function(object) {
