@@ -3,7 +3,7 @@ var id="735087896554462";  //要搜尋的專頁
 var isDataSet=false;       //資料載入完成後為true
 var isSearchClick;         //防止使用者在第一筆json還沒載入前搜尋,點搜尋按鈕後為true
 var until;                 //如有下一筆資料,until裡面有值,通常第一筆post前until沒有值
-var comein_position=50;    //卷軸高度,用於lazyLoad
+var comein_position=60;    //卷軸高度,用於lazyLoad
 var isLoading=false;       //資料載入中為true,資料載入完成false
 var dataNum=0;
 var limit=100;             //每次載入的數量
@@ -75,6 +75,14 @@ function getData() {
                             JsonData.pop();
                             isBottom=true;
                             maxNum=dataNum;
+                            if($(window).height()==$(document).height()){
+                                document.getElementById('Help').style.display = 'block';
+                                swal({
+                                    title: "沒有找到相關結果喔!!",
+                                    text: "換個單字試試看吧",
+                                    type: "warning"
+                                });
+                            }
                             document.getElementById('circularG').style.display = 'none';
                         }
                     }else{
@@ -176,7 +184,7 @@ function isDataLoaded(){
 function Report(){
     vex.dialog.prompt({
       message: '回報問題：',
-      placeholder: '遇到甚麼狀況呢？',
+      placeholder: '遇到甚麼狀況？',
       callback: function(value) {
         FB.api(
             "/me",
