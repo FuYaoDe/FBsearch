@@ -3,6 +3,8 @@ var isfailLoad=false;      //載入Json的時候如搜尋資料,isfailLoad為tru
 Parse.initialize("ftFWpXZZqwq5QxJ3KgQxAZDK8Jn7UR7Vjikg6mdZ", "fK0civbSaKPMQn7VOUFqfULf9gSLBfDcYT3UYIRC");
 var ReportKeywordObject = Parse.Object.extend("search_keyword");
 var ReportObject = Parse.Object.extend("search_Report");
+
+
 /**
  * 點擊搜尋按鈕時獲取輸入框,並且顯示出來
  */
@@ -23,6 +25,7 @@ function searchClick(){
         }
         search();
         document.getElementById('circularG').style.display = 'block';
+        document.getElementById('Help').style.display = 'none';
         FB.api(
             "/me",
             function(response) {

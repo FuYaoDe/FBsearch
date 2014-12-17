@@ -75,6 +75,7 @@ function getData() {
                             JsonData.pop();
                             isBottom=true;
                             maxNum=dataNum;
+                            document.getElementById('circularG').style.display = 'none';
                         }
                     }else{
                         isDataSet=true;
@@ -169,9 +170,9 @@ function isDataLoaded(){
     }
 }
 
-
-
-
+/**
+ * 回報問題視窗
+ */
 function Report(){
     vex.dialog.prompt({
       message: '回報問題：',
