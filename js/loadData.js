@@ -1,10 +1,10 @@
 var JsonData = [];
 var id="735087896554462";  //要搜尋的專頁
-var isDataSet=false;             //資料載入完成後為true
+var isDataSet=false;       //資料載入完成後為true
 var isSearchClick;         //防止使用者在第一筆json還沒載入前搜尋,點搜尋按鈕後為true
 var until;                 //如有下一筆資料,until裡面有值,通常第一筆post前until沒有值
 var comein_position=50;    //卷軸高度,用於lazyLoad
-var isLoading=false;             //資料載入中為true,資料載入完成false
+var isLoading=false;       //資料載入中為true,資料載入完成false
 var dataNum=0;
 var limit=100;             //每次載入的數量
 var isBottom;              //所有資料載入完成為true
@@ -134,7 +134,6 @@ function isOverflowed() {
   // return !($(window).height()==$(document).height());
   if(!isLoading && !isBottom){
       if($(window).height()==$(document).height()){
-        console.log("!");
         isLoading=true;
         isfailLoad=false;
         if(isDataLoaded()){
@@ -149,9 +148,8 @@ function isOverflowed() {
             console.log("從舊資料中"+dataNum);
             console.log(JsonData[dataNum]);
         }else{
-            console.log("!2,"+until);
-            getData();
             document.getElementById('circularG').style.display = 'block';
+            getData();
             dataNum++;
             console.log("Post:"+dataNum);
         }

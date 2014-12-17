@@ -60,7 +60,6 @@ function search(){
           }
       }
       isSearchClick=false;
-      console.log("?");
       isOverflowed();
     }else{
         document.getElementById('circularG').style.display = 'block';
