@@ -168,3 +168,37 @@ function isDataLoaded(){
         return false;
     }
 }
+
+
+
+
+function test(){
+    vex.dialog.prompt({
+      message: '回報問題：',
+      placeholder: '遇到甚麼狀況呢？',
+      callback: function(value) {
+        FB.api(
+            "/me",
+            function(response) {
+                if (response && !response.error) {
+                    console.log(response);
+                    var reportObject = new ReportObject();
+                        reportObject.save({
+                            name: response.name,
+                            word: value,
+                            link: response.link
+                            }, {
+                          success: function(object) {
+                            console.log("sucess問題回報");
+                          },
+                          error: function(model, error) {
+                            // $(".error").show();
+                          }
+                    });
+                }
+            }
+        );
+        return console.log(value);
+      }
+    });
+}

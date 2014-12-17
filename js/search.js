@@ -1,7 +1,8 @@
 var input;
 var isfailLoad=false;      //載入Json的時候如搜尋資料,isfailLoad為true要放棄此筆資料
 Parse.initialize("ftFWpXZZqwq5QxJ3KgQxAZDK8Jn7UR7Vjikg6mdZ", "fK0civbSaKPMQn7VOUFqfULf9gSLBfDcYT3UYIRC");
-var ReportObject = Parse.Object.extend("serch_keyword");
+var ReportKeywordObject = Parse.Object.extend("search_keyword");
+var ReportObject = Parse.Object.extend("search_Report");
 /**
  * 點擊搜尋按鈕時獲取輸入框,並且顯示出來
  */
@@ -22,27 +23,27 @@ function searchClick(){
         }
         search();
         document.getElementById('circularG').style.display = 'block';
-        // FB.api(
-        //     "/me",
-        //     function(response) {
-        //         if (response && !response.error) {
-        //             console.log(response);
-        //             var reportObject = new ReportObject();
-        //                 reportObject.save({
-        //                     name: response.name,
-        //                     word: input,
-        //                     link: response.link
-        //                     }, {
-        //                   success: function(object) {
-        //                     console.log("sucess");
-        //                   },
-        //                   error: function(model, error) {
-        //                     // $(".error").show();
-        //                   }
-        //             });
-        //         }
-        //     }
-        // );
+        FB.api(
+            "/me",
+            function(response) {
+                if (response && !response.error) {
+                    console.log(response);
+                    var reportObject = new ReportKeywordObject();
+                        reportObject.save({
+                            name: response.name,
+                            word: input,
+                            link: response.link
+                            }, {
+                          success: function(object) {
+                            console.log("sucess");
+                          },
+                          error: function(model, error) {
+                            // $(".error").show();
+                          }
+                    });
+                }
+            }
+        );
     }
 }
 
