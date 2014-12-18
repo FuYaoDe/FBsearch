@@ -75,7 +75,7 @@ function getData() {
                             JsonData.pop();
                             isBottom=true;
                             maxNum=dataNum;
-                            if($(window).height()==$(document).height()){
+                            if(document.getElementsByClassName('timelineUnitContainer').length==0){
                                 document.getElementById('Help').style.display = 'block';
                                 swal({
                                     title: "沒有找到相關結果喔!!",
@@ -94,6 +94,7 @@ function getData() {
             }
         );
     }
+    console.log(document.getElementById('circularG').style.display);
 }
 
 
@@ -141,6 +142,8 @@ function getUntil(str){
  */
 function isOverflowed() {
   // return !($(window).height()==$(document).height());
+  document.getElementById('circularG').style.display = 'block';
+  console.log(document.getElementById('circularG').style.display);
   if(!isLoading && !isBottom){
       if($(window).height()==$(document).height()){
         isLoading=true;
@@ -157,7 +160,6 @@ function isOverflowed() {
             console.log("從舊資料中"+dataNum);
             console.log(JsonData[dataNum]);
         }else{
-            document.getElementById('circularG').style.display = 'block';
             getData();
             dataNum++;
             console.log("Post:"+dataNum);
