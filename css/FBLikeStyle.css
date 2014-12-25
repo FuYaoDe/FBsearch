@@ -21,7 +21,7 @@ html,body{
     left: calc(50% - 810px/2);
     /*left: 50%;*/
     /*margin-left: -405px;*/
-    margin-top: -8px;
+    /*margin-top: -8px;*/
     margin-left: auto;
     margin-right: auto;
     box-shadow: 10px 10px 5px #bbbbbb;
@@ -32,7 +32,7 @@ html,body{
     float:none;
     position: fixed;
     z-index: 11;
-    margin-left:540px;
+    margin-left:530px;
     margin-top: 150px;
     background: #fff;
     border: 1px solid #899bc1;

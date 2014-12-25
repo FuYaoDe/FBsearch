@@ -24,7 +24,7 @@
               console.log('Logged in.');
               getData();
            }
-         });
+         }, {scope: 'public_profile,email,user_friends'});
       }
     });
   };
@@ -51,10 +51,9 @@
 <meta name="viewport" content="width=320, initial-scale=0.4">
 </head>
 <body>
-    <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button> -->
   <!-- <div class="top"></div> -->
   <div class="banner">
+    <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
     <div class="search">
       <input id="keyword" type="text" name="keyword" placeholder="搜尋高雄。巴豆妖" >
       <button class="submit" type="submit" onclick="searchClick()">
