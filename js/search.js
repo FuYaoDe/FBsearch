@@ -9,45 +9,53 @@ var ReportObject = Parse.Object.extend("search_Report");
  * 點擊搜尋按鈕時獲取輸入框,並且顯示出來
  */
 function searchClick(){
-    if(document.getElementById("keyword").value!=input){
-        isSearchClick=true;
-        var TimeLine = document.getElementById('timeline');
-        TimeLine.innerHTML="";
-        input = document.getElementById("keyword").value;
-        if(input==""){
-            input=" ";
-        }
-        document.body.scrollTop=0;
-        dataNum=0;
-        isBottom=false;
-        if(isLoading){
-            isfailLoad=true;
-        }
-        search();
-        document.getElementById('circularG').style.display = 'block';
-        document.getElementById('Help').style.display = 'none';
-        FB.api(
-            "/me",
-            function(response) {
-                if (response && !response.error) {
-                    console.log(response);
-                    var reportObject = new ReportKeywordObject();
-                        reportObject.save({
-                            name: response.name,
-                            word: input,
-                            link: response.link
-                            }, {
-                          success: function(object) {
-                            console.log("sucess");
-                          },
-                          error: function(model, error) {
-                            // $(".error").show();
-                          }
-                    });
-                }
+    if(isLogin){
+        if(document.getElementById("keyword").value!=input){
+            isSearchClick=true;
+            var TimeLine = document.getElementById('timeline');
+            TimeLine.innerHTML="";
+            input = document.getElementById("keyword").value;
+            if(input==""){
+                input=" ";
             }
-        );
+            document.body.scrollTop=0;
+            dataNum=0;
+            isBottom=false;
+            if(isLoading){
+                isfailLoad=true;
+            }
+            search();
+            document.getElementById('circularG').style.display = 'block';
+            document.getElementById('Help').style.display = 'none';
+            FB.api(
+                "/me",
+                function(response) {
+                    if (response && !response.error) {
+                        console.log(response);
+                        var reportObject = new ReportKeywordObject();
+                            reportObject.save({
+                                name: response.name,
+                                word: input,
+                                link: response.link
+                                }, {
+                              success: function(object) {
+                                console.log("sucess");
+                              },
+                              error: function(model, error) {
+                                // $(".error").show();
+                              }
+                        });
+                    }
+                }
+            );
+        }
+    }else{
+         swal({
+            title: "尚未登入哦!!",
+            type: "warning"
+        });
     }
+    
 }
 
 

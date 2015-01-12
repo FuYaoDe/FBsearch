@@ -6,29 +6,34 @@
    <script>
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '319598248226896',
+    appId      : '325838484269539',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
     version    : 'v2.2' // use version 2.1
   });
+  };
 
+  function checkLoginState() {
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
         console.log('Logged in.');
         getData();
+        document.getElementById("FBLoginButton").remove();
+        isLogin=true;
       }
       else {
         FB.login(function(response) {
            if (response.authResponse) {
               console.log('Logged in.');
               getData();
+              document.getElementById("FBLoginButton").remove();
+              isLogin=true;
            }
          }, {scope: 'public_profile,email,user_friends'});
       }
     });
-  };
-
+  }
   // Load the SDK asynchronously
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -53,7 +58,7 @@
 <body>
   <!-- <div class="top"></div> -->
   <div class="banner">
-    <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
+    <fb:login-button id="FBLoginButton" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
     <div class="search">
       <input id="keyword" type="text" name="keyword" placeholder="搜尋高雄。巴豆妖" >
       <button class="submit" type="submit" onclick="searchClick()">

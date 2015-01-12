@@ -9,6 +9,7 @@ var dataNum=0;
 var limit=100;             //每次載入的數量
 var isBottom;              //所有資料載入完成為true
 var maxNum;                //JsonData的最大值
+var isLogin=false;
 /**
  * 從FB.api撈取巴豆妖資料存進JsonData裡面
  */
