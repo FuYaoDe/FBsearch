@@ -1,8 +1,11 @@
 html,body{
     width: 100%;
-    height:auto;
+    height: auto;
     margin: 0 auto;
-    background: #e9eaed;
+    background-image: url(../pic/bg-01.png);
+    background-size: 100%;
+    background-attachment: fixed;
+    /*background: #e9eaed;*/
     /*background: #fff;*/
 }
 .timeline{
@@ -19,8 +22,8 @@ html,body{
     width: 810px;
     height: 185px;
     left: calc(50% - 810px/2);
-    margin-top: -8px;
-    box-shadow: 10px 10px 5px #bbbbbb;
+    margin-top: -22px;
+    box-shadow: 0px 0px 30px #fff;
 }
 
 .search{
@@ -74,6 +77,7 @@ input{
     margin-bottom: 12px;
     padding: 12px;
     width: 486px;
+    margin-left: calc(50% - 243px - 13px);
     /*position: relative;*/
 }
 .head{
@@ -196,16 +200,70 @@ a{
     font-size: 10px;
     top:98%;
     left:93%;
-    color: #777777;
+    color: #fff;
     text-decoration:underline;
     cursor: pointer;
 }
 
 #Help{
     position:absolute;
-    background-image: url(../pic/searchHelp.png);
+    background-image: url(../pic/searchHelp_clip.png);
+    background-position: 0px 0px;
     margin-top:200px;
     left: calc(50% - 870px/2);
     height: 500px;
     width: 810px;
+}
+
+
+/*phone RWD */
+@media (max-width: 1024px) {
+    html,body{
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        background-image: url(../pic/bg-01.png);
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-attachment: fixed;
+    }
+    .search{
+        float: none;
+        position: fixed;
+        z-index: 11;
+        margin-left: 200px;
+        margin-top: 150px;
+        background: #fff;
+        border: 1px solid #899bc1;
+        border-top-color: #6d84b4;
+        display: inline-block;
+        width: 200px;
+        height: 27px;
+        text-align: center;
+    }
+    input{
+        border: 0;
+        margin: 0 22px 0 5px;
+        outline: none;
+        padding: 1px 5px 1px 1px;
+    }
+    .banner{
+        background-image: url(../pic/banner.jpg);
+        position: fixed;
+        z-index: 10;
+        width: 550px;
+        height: 185px;
+        left: calc(50% - 550px/2);
+        margin-top: -22px;
+        box-shadow: 0px 0px 30px #fff;
+    }
+    #Help{
+        position:absolute;
+        background-image: url(../pic/searchHelp_clip_phone.png);
+        background-position: 0px 0px;
+        margin-top:100px;
+        left: calc(50% - 740px/2);
+        height: 500px;
+        width: 500px;
+    }
 }

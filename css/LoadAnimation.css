@@ -14,7 +14,8 @@ display: none;
 }
 .circularG{
 position:absolute;
-background-color:#3b5998;
+background-color:#fff;
+
 width:14px;
 height:14px;
 -moz-border-radius:9px;

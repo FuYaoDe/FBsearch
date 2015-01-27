@@ -1,0 +1,545 @@
+/* line 1, ../sass/FBstyle.sass */
+html, body {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  background-image: url(../pic/bg-01.png);
+  background-size: 100%;
+  background-attachment: fixed;
+}
+
+/* line 9, ../sass/FBstyle.sass */
+.timeline {
+  margin: 0px auto;
+  margin-top: 185px;
+  position: absolute;
+  left: calc(50% - 510px/2);
+}
+
+/* line 16, ../sass/FBstyle.sass */
+.banner {
+  background-image: url(../pic/banner.jpg);
+  position: fixed;
+  z-index: 10;
+  width: 810px;
+  height: 185px;
+  left: calc(50% - 810px/2);
+  margin-top: -22px;
+  box-shadow: 0px 0px 30px #fff;
+}
+
+/* line 27, ../sass/FBstyle.sass */
+.search {
+  float: none;
+  position: fixed;
+  z-index: 11;
+  margin-left: 540px;
+  margin-top: 150px;
+  background: #fff;
+  border: 1px solid #899bc1;
+  border-top-color: #6d84b4;
+  display: inline-block;
+  width: 200px;
+  height: 27px;
+}
+
+/* line 39, ../sass/FBstyle.sass */
+input {
+  border: 0;
+  margin: 0 22px 0 5px;
+  outline: none;
+  padding: 1px 5px 1px 1px;
+}
+
+/* line 47, ../sass/FBstyle.sass */
+.submit {
+  background-image: url(../pic/button.png);
+  background-repeat: no-repeat;
+  background-size: 502px 224px;
+  background-position: -120px -176px;
+  background-color: #fff;
+  border: 0;
+  cursor: pointer;
+  display: block;
+  height: 19px;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 22px;
+  margin-top: 3px;
+}
+
+/* line 64, ../sass/FBstyle.sass */
+.timelineUnitContainer {
+  background-color: #fff;
+  border: 1px solid #d3d6db;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: #d3d6db 0px 1px 0px;
+  -moz-box-shadow: #d3d6db 0px 1px 0px;
+  box-shadow: #d3d6db 0px 1px 0px;
+  margin-bottom: 12px;
+  padding: 12px;
+  width: 486px;
+  margin-left: calc(50% - 243px - 13px);
+  /*position: relative */
+}
+
+/* line 79, ../sass/FBstyle.sass */
+.head {
+  border-bottom: 1px solid #e5e5e5;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 0;
+}
+
+/* line 85, ../sass/FBstyle.sass */
+.name {
+  display: table-cell;
+  vertical-align: top;
+  width: 10000px;
+}
+
+/* line 90, ../sass/FBstyle.sass */
+.icon {
+  -webkit-border-radius: 2px;
+  height: 40px;
+  margin-right: 1px;
+  width: 40px;
+  float: left;
+  margin-right: 8px;
+}
+
+/* line 98, ../sass/FBstyle.sass */
+.detailicon {
+  -webkit-border-radius: 2px;
+  height: 50px;
+  width: 50px;
+  float: right;
+  /*margin-top: -10px */
+  margin-bottom: -40px;
+}
+
+/* line 106, ../sass/FBstyle.sass */
+.light {
+  /*font-weight: bold */
+  background-color: #6d84b4;
+  color: #ffffff;
+}
+
+/* line 111, ../sass/FBstyle.sass */
+.title {
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 16px;
+  margin: 4px 0px 1px 0;
+  color: #3b5998;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* line 120, ../sass/FBstyle.sass */
+.time {
+  font-size: 13px;
+  color: #9197a3;
+  line-height: 15px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* line 127, ../sass/FBstyle.sass */
+.detail {
+  font-size: 15px;
+  line-height: 20px;
+  margin-bottom: 15px;
+  word-wrap: break-word;
+}
+
+/* line 133, ../sass/FBstyle.sass */
+.pic {
+  margin-bottom: 8px;
+}
+
+/* line 137, ../sass/FBstyle.sass */
+.outsidelink {
+  background: #f6f7f8;
+  border: 1px solid #d8deea;
+  display: block;
+  margin-bottom: 12px;
+  padding: 8px 11px;
+  overflow: hidden;
+}
+
+/* line 145, ../sass/FBstyle.sass */
+.linkpic {
+  float: left;
+  margin-right: 12px;
+  margin-bottom: 5px;
+}
+
+/* line 150, ../sass/FBstyle.sass */
+.linktitle {
+  font-weight: bold;
+  color: #3b5998;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* line 156, ../sass/FBstyle.sass */
+.link {
+  font-size: 13px;
+  color: #9197a3;
+}
+
+/* line 160, ../sass/FBstyle.sass */
+.linkdetail {
+  font-size: 13px;
+  color: #9197a3;
+  margin-top: 8px;
+}
+
+/* line 165, ../sass/FBstyle.sass */
+.likebar {
+  width: 510px;
+  margin-left: -12px;
+  margin-bottom: -12px;
+  border-top: 1px solid #e9eaed;
+  background-color: #f6f7f8;
+  line-height: 24px;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  font-size: 13px;
+}
+
+/* line 177, ../sass/FBstyle.sass */
+.like {
+  margin-left: 8px;
+}
+
+/* line 180, ../sass/FBstyle.sass */
+a {
+  color: #3b5998;
+}
+
+/* line 184, ../sass/FBstyle.sass */
+#report {
+  position: fixed;
+  font-size: 10px;
+  top: 98%;
+  left: 93%;
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* line 194, ../sass/FBstyle.sass */
+#Help {
+  position: absolute;
+  background-image: url(../pic/searchHelp_clip.png);
+  background-position: 0px 0px;
+  margin-top: 200px;
+  left: calc(50% - 870px/2);
+  height: 500px;
+  width: 810px;
+}
+
+/*pad RWD */
+@media (max-width: 810px) {
+  /* line 3, ../sass/browser.sass */
+  html, body {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    background-image: url(../pic/bg-01.png);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-attachment: fixed;
+  }
+
+  /* line 12, ../sass/browser.sass */
+  .search {
+    float: none;
+    position: fixed;
+    z-index: 11;
+    margin-left: calc(50% - 100px);
+    margin-top: 150px;
+    background: #fff;
+    border: 1px solid #899bc1;
+    border-top-color: #6d84b4;
+    display: inline-block;
+    width: 200px;
+    height: 27px;
+    text-align: center;
+  }
+
+  /* line 26, ../sass/browser.sass */
+  input {
+    border: 0;
+    margin: 0 22px 0 5px;
+    outline: none;
+    padding: 1px 5px 1px 1px;
+  }
+
+  /* line 32, ../sass/browser.sass */
+  .banner {
+    background-image: url(../pic/banner.jpg);
+    position: fixed;
+    z-index: 10;
+    width: 550px;
+    height: 185px;
+    left: calc(50% - 550px/2);
+    margin-top: -22px;
+    box-shadow: 0px 0px 30px #fff;
+  }
+
+  /* line 42, ../sass/browser.sass */
+  #Help {
+    position: absolute;
+    background-image: url(../pic/searchHelp_clip_phone.png);
+    background-position: 0px 0px;
+    margin-top: 50px;
+    left: calc(50% - 500px/2);
+    height: 500px;
+    width: 500px;
+  }
+}
+/*phone RWD */
+@media (max-width: 360px) {
+  /* line 53, ../sass/browser.sass */
+  .search {
+    float: none;
+    position: fixed;
+    z-index: 11;
+    margin-left: calc(50% - 100px);
+    margin-top: 150px;
+    background: #fff;
+    border: 1px solid #899bc1;
+    border-top-color: #6d84b4;
+    display: inline-block;
+    width: 200px;
+    height: 27px;
+    text-align: center;
+  }
+
+  /* line 67, ../sass/browser.sass */
+  input {
+    border: 0;
+    margin: 0 22px 0 5px;
+    outline: none;
+    padding: 1px 5px 1px 1px;
+  }
+
+  /* line 73, ../sass/browser.sass */
+  .banner {
+    background-image: url(../pic/banner.jpg);
+    position: fixed;
+    z-index: 10;
+    width: 360px;
+    height: 185px;
+    left: calc(50% - 360px/2);
+    margin-top: -22px;
+    box-shadow: 0px 0px 30px #fff;
+  }
+
+  /* line 83, ../sass/browser.sass */
+  .timelineUnitContainer {
+    background-color: #fff;
+    border: 1px solid #d3d6db;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: #d3d6db 0px 1px 0px;
+    -moz-box-shadow: #d3d6db 0px 1px 0px;
+    box-shadow: #d3d6db 0px 1px 0px;
+    margin-bottom: 12px;
+    padding: 12px;
+    width: 300px;
+    margin-left: calc(50% - 70px);
+    /*position: relative */
+  }
+
+  /* line 98, ../sass/browser.sass */
+  .likebar {
+    width: 300px;
+    margin-left: -12px;
+    margin-bottom: -12px;
+    border-top: 1px solid #e9eaed;
+    background-color: #f6f7f8;
+    line-height: 24px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    font-size: 13px;
+  }
+}
+/* line 1, ../sass/loadAnimation.sass */
+#loading {
+  width: 100%;
+  z-index: 10;
+}
+
+/* line 5, ../sass/loadAnimation.sass */
+#circularG {
+  position: relative;
+  left: calc(255px - 30px);
+  margin-top: 25px;
+  margin-bottom: 25px;
+  width: 60px;
+  height: 60px;
+  display: none;
+}
+
+/* line 14, ../sass/loadAnimation.sass */
+.circularG {
+  position: absolute;
+  background-color: #fff;
+  width: 14px;
+  height: 14px;
+  -moz-border-radius: 9px;
+  -moz-animation-name: bounce_circularG;
+  -moz-animation-duration: 0.96s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-direction: linear;
+  -webkit-border-radius: 9px;
+  -webkit-animation-name: bounce_circularG;
+  -webkit-animation-duration: 0.96s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: linear;
+  -ms-border-radius: 9px;
+  -ms-animation-name: bounce_circularG;
+  -ms-animation-duration: 0.96s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-direction: linear;
+  -o-border-radius: 9px;
+  -o-animation-name: bounce_circularG;
+  -o-animation-duration: 0.96s;
+  -o-animation-iteration-count: infinite;
+  -o-animation-direction: linear;
+  border-radius: 9px;
+  animation-name: bounce_circularG;
+  animation-duration: 0.96s;
+  animation-iteration-count: infinite;
+  animation-direction: linear;
+}
+
+/* line 46, ../sass/loadAnimation.sass */
+#circularG_1 {
+  left: 0;
+  top: 24px;
+  -moz-animation-delay: 0.36s;
+  -webkit-animation-delay: 0.36s;
+  -ms-animation-delay: 0.36s;
+  -o-animation-delay: 0.36s;
+  animation-delay: 0.36s;
+}
+
+/* line 56, ../sass/loadAnimation.sass */
+#circularG_2 {
+  left: 6px;
+  top: 6px;
+  -moz-animation-delay: 0.48s;
+  -webkit-animation-delay: 0.48s;
+  -ms-animation-delay: 0.48s;
+  -o-animation-delay: 0.48s;
+  animation-delay: 0.48s;
+}
+
+/* line 66, ../sass/loadAnimation.sass */
+#circularG_3 {
+  top: 0;
+  left: 24px;
+  -moz-animation-delay: 0.6s;
+  -webkit-animation-delay: 0.6s;
+  -ms-animation-delay: 0.6s;
+  -o-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+/* line 76, ../sass/loadAnimation.sass */
+#circularG_4 {
+  right: 6px;
+  top: 6px;
+  -moz-animation-delay: 0.72s;
+  -webkit-animation-delay: 0.72s;
+  -ms-animation-delay: 0.72s;
+  -o-animation-delay: 0.72s;
+  animation-delay: 0.72s;
+}
+
+/* line 86, ../sass/loadAnimation.sass */
+#circularG_5 {
+  right: 0;
+  top: 24px;
+  -moz-animation-delay: 0.84s;
+  -webkit-animation-delay: 0.84s;
+  -ms-animation-delay: 0.84s;
+  -o-animation-delay: 0.84s;
+  animation-delay: 0.84s;
+}
+
+/* line 96, ../sass/loadAnimation.sass */
+#circularG_6 {
+  right: 6px;
+  bottom: 6px;
+  -moz-animation-delay: 0.96s;
+  -webkit-animation-delay: 0.96s;
+  -ms-animation-delay: 0.96s;
+  -o-animation-delay: 0.96s;
+  animation-delay: 0.96s;
+}
+
+/* line 106, ../sass/loadAnimation.sass */
+#circularG_7 {
+  left: 24px;
+  bottom: 0;
+  -moz-animation-delay: 1.08s;
+  -webkit-animation-delay: 1.08s;
+  -ms-animation-delay: 1.08s;
+  -o-animation-delay: 1.08s;
+  animation-delay: 1.08s;
+}
+
+/* line 116, ../sass/loadAnimation.sass */
+#circularG_8 {
+  left: 6px;
+  bottom: 6px;
+  -moz-animation-delay: 1.2s;
+  -webkit-animation-delay: 1.2s;
+  -ms-animation-delay: 1.2s;
+  -o-animation-delay: 1.2s;
+  animation-delay: 1.2s;
+}
+
+@-moz-keyframes bounce_circularG {
+  0% {
+    -moz-transform: scale(1);
+  }
+  100% {
+    -moz-transform: scale(0.3);
+  }
+}
+@-webkit-keyframes bounce_circularG {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.3);
+  }
+}
+@-ms-keyframes bounce_circularG {
+  0% {
+    -ms-transform: scale(1);
+  }
+  100% {
+    -ms-transform: scale(0.3);
+  }
+}
+@-o-keyframes bounce_circularG {
+  0% {
+    -o-transform: scale(1);
+  }
+  100% {
+    -o-transform: scale(0.3);
+  }
+}
