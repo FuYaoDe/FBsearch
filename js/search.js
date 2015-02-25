@@ -8,6 +8,12 @@ var ReportObject = Parse.Object.extend("search_Report");
 /**
  * 點擊搜尋按鈕時獲取輸入框,並且顯示出來
  */
+function isEnter(event){
+    console.log(event.keyCode);
+    if(event.keyCode==13){
+        searchClick();
+    }
+}
 function searchClick(){
     if(isLogin){
         if(document.getElementById("keyword").value!=input){
