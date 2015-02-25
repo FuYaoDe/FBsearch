@@ -6,7 +6,7 @@ var until;                 //如有下一筆資料,until裡面有值,通常第�
 var comein_position=60;    //卷軸高度,用於lazyLoad
 var isLoading=false;       //資料載入中為true,資料載入完成false
 var dataNum=0;
-var limit=100;             //每次載入的數量
+var limit=50;             //每次載入的數量
 var isBottom;              //所有資料載入完成為true
 var maxNum;                //JsonData的最大值
 var isLogin=false;

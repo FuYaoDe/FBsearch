@@ -6,7 +6,7 @@
    <script>
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '325838484269539',
+    appId      : '319598248226896',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
@@ -19,7 +19,7 @@
       if (response.status === 'connected') {
         console.log('Logged in.');
         getData();
-        document.getElementById("FBLoginButton").remove();
+        // document.getElementById("FBLoginButton").style.display = 'none';
         isLogin=true;
       }
       else {
@@ -27,7 +27,7 @@
            if (response.authResponse) {
               console.log('Logged in.');
               getData();
-              document.getElementById("FBLoginButton").remove();
+              // document.getElementById("FBLoginButton").style.display = 'none';
               isLogin=true;
            }
          }, {scope: 'public_profile,email,user_friends'});
@@ -55,14 +55,12 @@
 <meta name="viewport" content="width=320, initial-scale=0.4">
 </head>
 <body>
-<<<<<<< HEAD
-=======
-    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" style="z-index:999">
+
+    <fb:login-button id="FBLoginButton" scope="public_profile,email" onlogin="checkLoginState();" style="z-index:999">
 </fb:login-button>
->>>>>>> origin/master
   <!-- <div class="top"></div> -->
   <div class="banner">
-    <fb:login-button id="FBLoginButton" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+    <!-- <fb:login-button id="FBLoginButton" scope="public_profile,email" onlogin="checkLoginState();"style="z-index:999"></fb:login-button> -->
     <div class="search">
       <input id="keyword" type="text" name="keyword" placeholder="搜尋高雄。巴豆妖" onkeypress="isEnter(event)">
       <button class="submit" type="submit" onclick="searchClick()">
